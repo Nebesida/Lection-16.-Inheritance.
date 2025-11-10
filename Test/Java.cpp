@@ -10,7 +10,7 @@ Java::Java(std::string courseName, std::string topicName, Human lectorName, int 
 Java::Java(std::string courseName, std::string topicName, Human lectorName) : Java(courseName, topicName, lectorName, 0, 0, 0, 0) {}
 Java::Java(std::string courseName, std::string topicName) : Java(courseName, topicName, Human(), 0, 0, 0, 0) {}
 Java::Java(std::string courseName) : Java(courseName, "undefined", Human(), 0, 0, 0, 0) {}
-Java::Java(const Java& other) : Topic(), _frameworkName(other._frameworkName) {}
+Java::Java(const Java& other) : Topic(other), _frameworkName(other._frameworkName) {}
 
 void Java::setFrameworkName(std::string frameworkName) { _frameworkName = correctAlpha(frameworkName); }
 std::string Java::getFrameworkName() { return _frameworkName; }
@@ -19,5 +19,6 @@ void Java::displayCourse()
 {
 	setlocale(LC_ALL, "");
 	Topic::displayCourse();
-	std::cout << "Èñïîëüçóåìûé ôðåéìâîðê Java: " << _frameworkName << std::endl;
+	std::cout << "ÃˆÃ±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã¬Ã»Ã© Ã´Ã°Ã¥Ã©Ã¬Ã¢Ã®Ã°Ãª Java: " << _frameworkName << std::endl;
+
 }
