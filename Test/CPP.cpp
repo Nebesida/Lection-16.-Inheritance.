@@ -1,16 +1,16 @@
 #include "CPP.h"
 #include <iostream>
 
-//деструктор
+//Г¤ГҐГ±ГІГ°ГіГЄГІГ®Г°
 CPP::~CPP() {}
 
-//конструктор по умолчанию
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ
 CPP::CPP() : Topic() {_standart = 0;}
 
-//параметризованный конструктор
+//ГЇГ Г°Г Г¬ГҐГІГ°ГЁГ§Г®ГўГ Г­Г­Г»Г© ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°
 CPP::CPP(std::string courseName, std::string topicName, Human lectorName, int lectsCount, int tasksCount, int topicSize, int standart) : Topic(courseName, topicName, lectorName, lectsCount, tasksCount, topicSize), _standart(correctCount(standart)) {}
 
-//делегирование конструкторов
+//Г¤ГҐГ«ГҐГЈГЁГ°Г®ГўГ Г­ГЁГҐ ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г°Г®Гў
 CPP::CPP(std::string courseName, std::string topicName, Human lectorName, int lectsCount, int tasksCount, int topicSize) : CPP (courseName, topicName, lectorName, lectsCount, tasksCount, topicSize, 0) {}
 CPP::CPP(std::string courseName, std::string topicName, Human lectorName, int lectsCount, int tasksCount) : CPP(courseName, topicName, lectorName, lectsCount, tasksCount, 0, 0) {}
 CPP::CPP(std::string courseName, std::string topicName, Human lectorName, int lectsCount) :	CPP(courseName, topicName, lectorName, lectsCount, 0, 0, 0) {}
@@ -18,17 +18,18 @@ CPP::CPP(std::string courseName, std::string topicName, Human lectorName) : CPP(
 CPP::CPP(std::string courseName, std::string topicName) : CPP(courseName, topicName, Human(), 0, 0, 0, 0) {}
 CPP::CPP(std::string courseName) : CPP(courseName, "undefined", Human(), 0, 0, 0, 0) {}
 
-//конструктор копирования
-CPP::CPP(const CPP& other) : Topic(), _standart(other._standart) {}
+//ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГ°Г®ГўГ Г­ГЁГї
+CPP::CPP(const CPP& other) : Topic(other), _standart(other._standart) {}
 
-//геттеры_сеттеры
+//ГЈГҐГІГІГҐГ°Г»_Г±ГҐГІГІГҐГ°Г»
 void CPP::setStandart(int standart) {_standart = correctCount(standart);}
 int CPP::getStandart() {return _standart;}
 
-//методы
+//Г¬ГҐГІГ®Г¤Г»
 void CPP::displayCourse()
 {
 	setlocale(LC_ALL, "");
 	Topic::displayCourse();
-	std::cout << "Используемый стандарт С++: " << _standart << std::endl;
+	std::cout << "Г€Г±ГЇГ®Г«ГјГ§ГіГҐГ¬Г»Г© Г±ГІГ Г­Г¤Г Г°ГІ Г‘++: " << _standart << std::endl;
+
 }
